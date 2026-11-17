@@ -46,10 +46,12 @@ rss:
   enabled: true                       # 是否启用 RSS 抓取
   freshness_filter:
     enabled: true                     # 是否启用新鲜度过滤
-    max_age_days: 1                   # 最大文章年龄：只保留 1 天内的最新资讯
+    max_age_days: 1                   # 全局默认：只保留 1 天内的最新资讯
 
   feeds:
-    # 👇 替换后的 7 个财经与研报 RSS 源（已使用公网可用实例，适配 GitHub Actions）
+    # ==========================================
+    # 💰 财经与投资类 (高频快讯、深度研报)
+    # ==========================================
     - id: "eastmoney-kuaixun"
       name: "东方财富-快讯"
       url: "https://rsshub.rssforever.com/eastmoney/report"
@@ -78,11 +80,99 @@ rss:
       name: "证券时报-权威信披"
       url: "https://www.stcn.com/rss/news.xml"
 
+    # 👇 新增：财联社-电报（7x24小时A股快讯）
+    - id: "cls-telegraph"
+      name: "财联社-电报"
+      url: "https://rsshub.rssforever.com/cls/telegraph"
+
+    # 👇 新增：华尔街见闻-快讯（全球宏观实时动态）
+    - id: "wallstreetcn-live"
+      name: "华尔街见闻-快讯"
+      url: "https://rsshub.rssforever.com/wallstreetcn/live"
+
+    # 👇 新增：东方财富-策略研报（A股策略深度研究）
+    - id: "eastmoney-strategy"
+      name: "东方财富-策略研报"
+      url: "https://rsshub.rssforever.com/eastmoney/report/strategyreport"
+      max_age_days: 7
+
+    # 👇 新增：东方财富-宏观研究（中国宏观深度分析）
+    - id: "eastmoney-macro"
+      name: "东方财富-宏观研究"
+      url: "https://rsshub.rssforever.com/eastmoney/report/macresearch"
+      max_age_days: 7
+
+    # 👇 新增：财新网（中国深度调查标杆，可能受限于付费墙）
+    - id: "caixin-latest"
+      name: "财新网"
+      url: "https://rsshub.rssforever.com/caixin/latest"
+      max_age_days: 3
+
+    # 👇 新增：The Economist（全球宏观定调，深度分析）
+    - id: "economist-finance"
+      name: "The Economist"
+      url: "https://www.economist.com/finance-and-economics/rss.xml"
+      max_age_days: 7
+
+    # ==========================================
+    # 📰 综合新闻与深度报道
+    # ==========================================
+    # 👇 新增：SCMP（大中华区深度报道英文版）
+    - id: "scmp-china"
+      name: "SCMP"
+      url: "https://www.scmp.com/rss/91/feed"
+      max_age_days: 3
+
+    # 👇 新增：知乎每日精选（社区高质量问答）
+    - id: "zhihu-daily"
+      name: "知乎每日精选"
+      url: "https://www.zhihu.com/rss"
+      max_age_days: 3
+
+    # 👇 新增：少数派（高效工作与数字生活）
+    - id: "sspai"
+      name: "少数派"
+      url: "https://sspai.com/feed"
+      max_age_days: 7
+
+    # ==========================================
+    # 🌱 个人成长、自由职业与数字游民 (低频源，放宽时间限制)
+    # ==========================================
+    # 👇 新增：Bob Jiang（个人成长与敏捷教练）
+    - id: "bobjiang"
+      name: "Bob Jiang 的博客"
+      url: "https://www.bobjiang.com/feed/"
+      max_age_days: 30
+
+    # 👇 新增：让小产品的独立变现更简单
+    - id: "ezindie"
+      name: "让小产品的独立变现更简单"
+      url: "https://www.ezindie.com/feed/rss.xml"
+      max_age_days: 30
+
+    # 👇 新增：阿小信的自由职业周记
+    - id: "axiaoxin"
+      name: "阿小信的自由职业周记"
+      url: "https://blog.axiaoxin.com/feed/"
+      max_age_days: 30
+
+    # 👇 新增：琚致远的博客（独立开发者）
+    - id: "juzhiyuan"
+      name: "琚致远的博客"
+      url: "https://juzhiyuan.me/feed/"
+      max_age_days: 30
+
+    # 👇 新增：数字游民剑伟
+    - id: "nomad-jianwei"
+      name: "数字游民剑伟"
+      url: "https://jianweiblog.com/feed/"
+      max_age_days: 30
+
 # ===============================================================
 # 4. 报告模式
 # ===============================================================
 report:
-  mode: "incremental"                     # 报告模式（daily=当日汇总, current=当前榜单, incremental=增量）
+  mode: "incremental"                 # 报告模式（daily=当日汇总, current=当前榜单, incremental=增量）
   display_mode: "keyword"             # 分组维度：按关键词分组显示
   sort_by_position_first: false       # 关键词模式排序
   rank_threshold: 5                   # 排名高亮阈值
