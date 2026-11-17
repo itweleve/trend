@@ -82,7 +82,7 @@ rss:
 # 4. 报告模式
 # ===============================================================
 report:
-  mode: "current"                     # 报告模式（daily=当日汇总, current=当前榜单, incremental=增量）
+  mode: "incremental"                     # 报告模式（daily=当日汇总, current=当前榜单, incremental=增量）
   display_mode: "keyword"             # 分组维度：按关键词分组显示
   sort_by_position_first: false       # 关键词模式排序
   rank_threshold: 5                   # 排名高亮阈值
