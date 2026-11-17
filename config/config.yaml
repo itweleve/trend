@@ -34,10 +34,6 @@ platforms:
     - id: "cls-hot"
       name: "财联社热门"
       expected_domain: "cls.cn"
-    # 新增：雪球热帖（捕捉散户与游资情绪，判断交易异动）
-    - id: "xueqiu-hot"
-      name: "雪球热帖"
-      expected_domain: "xueqiu.com"
 
 # ===============================================================
 # 3. 数据源 - RSS 订阅
